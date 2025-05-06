@@ -24,7 +24,13 @@
 ![filter](imgs/filter.PNG)
 - If we have an input xn (xn0, xn1, xn2...), an output yn, calculated using weights; yn = xn.w (where . is the dot product); And a desired output dn; we can calculate the error en = dn - w.xn for each input
 - A way to update the parameters w so the filter learns the noise is by minimizing the error. To do this we calculate the function of the error by squaring each error and taking the expected value of that: J = E((dn - w.xn)^2). Because we dont have probabilities, the expected value E is simply the sample average. E(xn) = 1/n SUM from n = 1 to n(xn)
+- [IMPORTANT EXPLANATION](https://chatgpt.com/share/681a37ec-7c78-800d-9edb-9c7e4693e533)
 - We square the errors because they can be negative and cancel each other, it punishes big errors more, and makes the error function differentiable everywhere (MSE)
 - There are two main ways of minimizing this function, setting the derivative with respect to w to 0 and solve the equation, or use gradient descent. However, both ways are computationally expensive. That's why the LMS algorithm was invented (next paragraph)
 
+### LMS algorithm
 
+- What we saw earlier about filters can be applyed to a neuron, lets say we want to build one that learns to differentiate the letter J (desired output -1) from the letter T (desired output 1)\
+![neuron](imgs/neuronchap3.PNG)
+- error(e) = d - y = d - wTx
+- If we wanted to minimize the error function with gradient descent, we would have to derive it with respect to each parameter w to calculate the gradient. To avoid this, we take the gradient as the gradient of the error function for the current data point. wnew = wold + 2μεx. Where ε (ε = d - wTx.) is the error for that point, μ the step size and x the vector representing that data point. 
