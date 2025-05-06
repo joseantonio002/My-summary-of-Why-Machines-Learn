@@ -21,7 +21,7 @@
 ### First approximation to minimizing the error in order to optimize parameters
 
 - This chapter uses an adaptative filter as an example. This filter takes an input (xn) each time step, that can be seconds, minutes, months... and filters the noise from the input. The catch is that the noise is different each time we use the filter, so it has to be adaptative, meaning it has to learn the characteristics of the noise each time, like a neuron has to learn the patterns in the data:\
-![filter](img/filter.PNG)
+![filter](imgs/filter.PNG)
 - If we have an input xn (xn0, xn1, xn2...), an output yn, calculated using weights; yn = xn.w (where . is the dot product); And a desired output dn; we can calculate the error en = dn - w.xn for each input
 - A way to update the parameters w so the filter learns the noise is by minimizing the error. To do this we calculate the function of the error by squaring each error and taking the expected value of that: J = E((dn - w.xn)^2). Because we dont have probabilities, the expected value E is simply the sample average. E(xn) = 1/n SUM from n = 1 to n(xn)
 - We square the errors because they can be negative and cancel each other, it punishes big errors more, and makes the error function differentiable everywhere (MSE)
