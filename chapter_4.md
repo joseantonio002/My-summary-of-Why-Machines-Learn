@@ -15,7 +15,7 @@
 ### Estimating the underlying distribution of the data and its parameters in supervised learning
 
 - In supervised learning we are given some labeled data, X. Each instance of X is a d-dimensional vector, meaning it has d components. So, X is a matrix, where each row of the matrix is one instance of the data. Associated with each instance of X is a label, y. This data has an underlying probability distribution P(X, y)
-- Since finding the real underlying distribution is very difficult, we assume its type. Then given this assumed distribution there are two main ways of finding its parameters so its adjust to the data (Note: nonparametic distributions exists).
+- Since finding the real underlying distribution is very difficult, we assume its type. Then given this assumed distribution there are two main ways of finding its parameters so its adjust to the data (Note: nonparametic distributions exists)
 - MLE (maximum likelihood estimation) Frequentist methodology
 - MAP (maximum a posteriori) Bayesian methodology
 - MLE is powerful when you have a lot of sampled data, while MAP works best with fewer data
@@ -27,13 +27,20 @@
 ![bayesian](imgs/bayesian_optimal_classifier.PNG)\
 and we have access to all the elements in the equation
 - If we had access to the real underlying distributions, this (bayes optimal classifier) is the best an ML algorithm can do (and still not 100% accurate, imagine for some X for class 1 is 90% and class 2 is 10%, it still can be wrong), however this almost never happens, and here is where we run into trouble. This algorithm gets computationally impossible very quickly
-- The more features X has, the more data we need to calculate the probability distribution and its harder to find the probability distribution. For N = 1 we need to find a 2D function, for N = 2 a 3D function and so on. This gets out of hand very quickly.
+- The more features X has, the more data we need to calculate the probability distribution and its harder to find the probability distribution. For N = 1 we need to find a 2D function, for N = 2 a 3D function and so on. This gets out of hand very quickly
 - This is why we apply some simplification to the algorithm to create a new one called Naive bayes 
 
 ### Naive Bayes/Idiot Bayes classifier
 - Instead of trying to find P([x1, x2, x3..., xn], y) wich is very difficult, we assume that all features are sampled from their own distributions independently of one another
 - This implies that the variation in one feature has nothing to do with variation in other feature, wich is likely not true, but it's the assumption we make so the calculations are simpler
 -  Mutual independence assumption: P(x1, x2, x3, x4, x5 | y = A) = P(x1 | y = A) × P(x2 | y = A) × P(x3 | y = A) × P(x4 | y = A) × P(x5 | y = A)
--  To estimate the distribution probabilities of the data, we can model each feature as a continuous random variable, fitting a curve over the histogram or as a discrete random variable, using bins.
+-  To estimate the distribution probabilities of the data, we can model each feature as a continuous random variable, fitting a curve over the histogram or as a discrete random variable, using bins
+
+### Discriminative and generative models
+
+- In machine learning, a linear classifier makes a classification decision for each object based on a linear combination of its features. There are two broad classes of methods for determining the parameters of a linear classifier, they can be generative and discriminative models [source](https://en.wikipedia.org/wiki/Linear_classifier)
+- Generative models focus on learning the distribution of the data P(X, y) like we saw before. If we can somehow learn or estimate the entire joint probability distribution Pθ(X, y), which is some complex surface in a hyperdimensional space, we will have a model of all the data, the feature vectors, and the labels. This enables us to do something very powerful: generate new data that resemble the training data by sampling from the distribution. This is why they are called Generative models
+- On the other hand, discriminative models studies the P(y|x) or maps the given unobserved variable (target) x to a class label y dependent on the observed variables (training samples). Basically they try to separate one cluster of data points from another by identifying a boundary between them. For example the NN algorithm.
+- A trick to differentiatie is: any linear classifier that doesn't try to learn the probability distribution is a discriminative model.
 
 
