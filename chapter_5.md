@@ -27,3 +27,6 @@
 - In high-dimensional spaces, data points become sparse. The more features we have, the harder it is to find similar data.
 - Data becomes sparse, distance metrics (like Euclidean distance) lose meaning, overfitting becomes more likely, computation becomes more expensive
 - To reduce dimensionality, we use a technique called PCA (principal component analysis)
+- One way to mitigate the problem would be to increase the number of data samples. Unfortunately, for the solution to work, this number must grow exponentially with the number of dimensions, and so, the method runs out of steam very quickly. The curse takes over
+
+
