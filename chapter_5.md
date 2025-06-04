@@ -10,9 +10,9 @@
 - To measure the distance between points, we can use the euclidean distance or the Manhattan distance
 - This distances (and others) can be used to find similarities between data points, the shorter the distance between two points, the more they are alike
 
-### Nearest Neighbord algorithm and the concepts of overfitting and generalization
+### Nearest Neighbor algorithm and the concepts of overfitting and generalization
 
-- Nearest Neighbord is a classification algorithm that classifies a new data point based on its nearest data point. For example, if we have a problem with two classes, 1 and 2, if the nearest data point to our new data point belongs to class 1, then the new data point will be classified as belonging to class 1
+- Nearest Neighbor is a classification algorithm that classifies a new data point based on its nearest data point. For example, if we have a problem with two classes, 1 and 2, if the nearest data point to our new data point belongs to class 1, then the new data point will be classified as belonging to class 1
 - NN finds a nonlinear boundary between classes, however if we have outliers or misplaced datapoints it overfits (meaning the algorithm will missclassify new data points due to the outliers) \
 ![overfit](imgs/overfitingNN.PNG)\
 - To avoid this we increase the number of nearest neighbors against which to compare the new data point. This is called k-NN, where k is the number of nearest neighbors to compare with (it has to be and odd number)
