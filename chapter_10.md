@@ -2,7 +2,9 @@
 
 ### Previous concepts
 
-### First paragraph
+- Chain rule
+
+### How do we train multi-layer neural networks?
 
 - There was a problem because no one knew how to train multi-layer perceptrons
 - Rossenblat was the first to introduce the concept of backpropagation, where the output value for an input minus the real expected value (the error) propagates back to change the weights
@@ -11,21 +13,20 @@
 and take a small step in the opposite direction by updating each weight by a tiny amount
 - The problem with this is that the shape of the function you’re descending is not necessarily convex, meaning its possible that the gradient descent algorithm gets stuck in some local minima
 
-### Second paragraph
+### The basics 
 
-- Te explica como entrenar una neurona usando la función de error y gradient descend, pero claro esto no sirve para multilayer
-- Sin embargo con una sola capa de neuronas no podemos resolver problemas que no sean linealmente independendientes
+- To update the parameters of a neural network using the error made by the network we need a loss function. Then we find the gradient of this loss function w.r.t all the weights and bias of the network, and with the gradient we can update the parameters by going in the opposite direction of the gradient (gradient descend)
+- However, with just a single layer of neurons, we cannot solve problems that are not linearly independent.
 
-### Third paragraph
+### Nonlinearity added to the mix
 
-- Una única neurona lo que hace es encontrar una línea/hiperplano (revisar capítulo 2). Si es regresión lineal una línea que pase por los datos, no usamos función de activación, si es clasificación una línea que separe los datos, usamos función de activación...
-- Añadir más neuronas en la misma capa lo único que hace es encontrar líneas diferentes, pero no combina las líneas, cada una es independiente, como si las demas no existieran cada una se ocupa de lo suyo
-- Para combinar las líneas de una capa necesitamos otra capa adicional
-- Sin embargo entre más capas añadimos, más parámetros y por lo tanto más derivadas parciales a calcular, esto se vuelve insostenible. Aquí es donde entra backpropagation
+- A single neuron essentially finds a line/hyperplane (see Chapter 2). If it's linear regression, it finds a line that fits the data—we don’t use an activation function. If it’s classification, it finds a line that separates the data—we do use an activation function...
+- Adding more neurons in the same layer only results in finding different lines, but they do not combine; each one is independent, as if the others didn’t exist—each neuron handles its own part.
+- To combine the lines from one layer, we need an additional layer. However, the more layers we add, the more parameters there are, and therefore more partial derivatives to compute. This becomes unsustainable. This is where backpropagation comes in.
 
-### Fourth paragraph
+### Backpropagation algorithm 
 
-- En el forward pass la red calcula cada dimensión del gradiente usando trucos de calculo (regla de la cadena...)
-- Para hacerlo, al final del forward pass tiene que recordar las salidas de cada neurona y todos los pesos y bias (se usan para calcular el gradiente sin derivar)
+- In the forward pass, the network computes each dimension of the gradient using calculus tricks (chain rule, etc.).
+- To do this, at the end of the forward pass, it must remember the outputs of each neuron and all the weights and biases (they’re used to compute the gradient without taking derivatives from scratch).
 - Training eventually comes down to this: Provide the network with some set of inputs, figure out what the expected output should be (either because we humans have annotated the data and know what the output should be or because, in types of learning called self-supervised, the expected output is some known variation of the input itself), calculate the loss, calculate the gradient of the loss, update the weights/biases, rinse and repeat
 
