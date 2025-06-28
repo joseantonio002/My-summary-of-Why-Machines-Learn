@@ -1,0 +1,6 @@
+### Chapter 11
+
+This chapter focuses on explaining the history of CNN and how they work. Also telling how ML researcher started using GPU's to train networks.
+Since I already have experience with convolutional neural networks and know how they work I wont do a summary, only this part:
+
+An objective function is a slight but significant change to the loss function (a function that takes in the ML model’s parameters and then calculates the loss, i.e MSE, over the entire training dataset). We saw how the loss function can be minimized or optimized. Working only with the loss function comes with an inherent problem: Do too well on the optimization, and your ML model can overfit the data; it can literally memorize everything. In which case, it might perform badly when making predictions on test data it hasn’t seen before. To avoid this, one can add an extra term to the loss function, something called a regularizer. This term is designed to make the ML model avoid overfitting. The loss function and the regularizer taken together constitute the objective function. Minimizing the objective function, instead of just a pure loss function, leads to a model that can generalize better to unseen data.
