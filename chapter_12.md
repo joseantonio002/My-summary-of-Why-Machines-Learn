@@ -37,3 +37,8 @@ They should simply overfit the data and fail to make inferences about, or “gen
 - A model is trained using unlabeled data, having it predict missing parts from the context.
 - In language, this involves masking words in a sentence (such as “I'm going to walk back ___”) and training the model to predict the missing word.
 - In images, the process is similar: pixels or parts of the image are hidden and the model is trained to reconstruct them.
+
+### Reasoning or regurgitating?
+
+- To this day, is not clear why deep neural networks behave this way, there is a debate between people that think the LLM's are reasoning and people that think LLM's are just regurgitating text
+![biasvariance2](imgs/bias-variance2.png)
